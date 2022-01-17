@@ -1,5 +1,4 @@
 import express from 'express'
-import dotenv from 'dotenv'
 
 class App {
     public express: express.Application
@@ -12,7 +11,6 @@ class App {
 
     private middlewares (): void {
       this.express.use(express.json())
-      dotenv.config()
     }
 
     private routes (): void {
