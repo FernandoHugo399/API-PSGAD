@@ -9,10 +9,12 @@
     "build": "sucrase ./src -d ./dist --transforms typescript,imports"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
+    "dotenv": "^14.1.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",
