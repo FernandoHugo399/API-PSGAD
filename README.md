@@ -29,6 +29,6 @@ npm run dev
 Post: /auth/login
 
 # verify
-get: /auth
+Get: /auth
 
 ```
