@@ -28,7 +28,7 @@ class LoginController {
 
         if (!result) return res.status(401).send({ error: 'Authentication failed' })
 
-        const token = jwt.sign({ id_uswe: user.rows[0]._id_adm }, process.env.SECRET_JWT, { expiresIn: 60 * 60 * 24 })
+        const token = jwt.sign({ id: user.rows[0].id_adm }, process.env.SECRET_JWT, { expiresIn: 60 * 60 * 24 })
         return res.status(200).send({ message: 'User Authenticated', token: token })
       })
     } catch (err) {
