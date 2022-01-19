@@ -2,6 +2,7 @@ import express from 'express'
 import 'dotenv/config'
 import bodyParser from 'body-parser'
 import { db } from './database/db'
+import { router as Auth } from './routes/Auth'
 
 class App {
     public express: express.Application
@@ -20,9 +21,7 @@ class App {
     }
 
     private routes (): void {
-      this.express.use('/', (req, res) => {
-        res.send('Hello World!')
-      })
+      this.express.use('/auth', Auth)
     }
 
     private database (): void {
