@@ -5,8 +5,8 @@ import Verify from '../middlewares/Verify'
 const router = Router()
 
 router.use('/login', LoginController.Login)
-router.use('/teste', Verify.AuthVerify, (req, res) => {
-  return res.status(200).send('okay')
+router.use('/', Verify.AuthVerify, (req, res) => {
+  return res.status(201).send({ message: 'Access relesead' })
 })
 
 export { router }
