@@ -23,3 +23,12 @@ npm run dev
 ```
 
 
+## Routes:
+```js
+# login
+Post: /auth/login
+
+# verify
+Get: /auth
+
+```
