@@ -12,7 +12,10 @@ declare let process : {
 class LoginController {
   public async Login (req: Request, res: Response) {
     if (!req.body.email || !req.body.password || typeof req.body.email === undefined || typeof req.body.password === undefined) {
-      return res.status(401).send({ error: 'All data has not been filled in. { email, password }', message: 'Preencha todos os campos' })
+      return res.status(401).send({
+        error: 'All data has not been filled in. { email, password }',
+        message: 'Preencha todos os campos'
+      })
     }
 
     const email = req.body.email.trim()

@@ -15,7 +15,7 @@ class AuthVerify {
   public async AuthVerify (req: request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization
 
-    if (!authHeader) { return res.status(401).send({ error: 'No token provided', message: 'Token não informado' }) }
+    if (!authHeader) { return res.status(200).send({ authError: 'No token provided', message: 'Token não informado' }) }
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,7 +24,7 @@ class AuthVerify {
 
       return next()
     } catch (err) {
-      return res.status(401).send({ error: 'Invalid Token: ' + err, message: 'Token inválido' })
+      return res.status(200).send({ authError: 'Invalid Token: ' + err, message: 'Token inválido' })
     }
   }
 }
