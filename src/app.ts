@@ -20,7 +20,8 @@ class App {
       this.express.use(bodyParser.urlencoded({ extended: false }))
       this.express.use(bodyParser.json())
       this.express.use(cors({
-        origin: 'http://localhost:4200'
+        origin: 'http://localhost:4200',
+        allowedHeaders: 'Content-Type, Authorization'
       }))
     }
 
