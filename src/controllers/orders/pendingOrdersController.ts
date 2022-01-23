@@ -8,9 +8,9 @@ class PendingOrdersController {
       inner join cliente
       on pedido.id_cliente = cliente.id_cliente
       where status = 'pendente'
-      order by data_pedido desc`)
+      order by data_pedido`)
 
-      return res.status(200).send({ pedidos: resul })
+      return res.status(200).send({ length: resul.rowCount, pedidos: resul.rows })
     } catch (err) {
       return res.status(200).send({ error: 'Ocorreu um erro: ' + err })
     }
