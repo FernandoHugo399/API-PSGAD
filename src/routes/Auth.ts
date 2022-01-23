@@ -6,7 +6,7 @@ const router = Router()
 
 router.post('/login', LoginController.Login)
 router.get('/', Verify.AuthVerify, (req, res) => {
-  return res.status(200).send({ message: 'Access relesead' })
+  res.send({ message: 'ok' })
 })
 
 export { router }

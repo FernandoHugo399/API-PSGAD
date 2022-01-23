@@ -3,6 +3,7 @@ import 'dotenv/config'
 import bodyParser from 'body-parser'
 import { db } from './database/db'
 import { router as Auth } from './routes/Auth'
+import { router as Order } from './routes/Orders'
 import cors from 'cors'
 
 class App {
@@ -27,6 +28,7 @@ class App {
 
     private routes (): void {
       this.express.use('/auth', Auth)
+      this.express.use('/order', Order)
       this.express.use((req, res) => {
         res.status(404).send({ error: 'not found' })
       })
