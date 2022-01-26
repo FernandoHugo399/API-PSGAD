@@ -5,6 +5,7 @@ import { db } from './database/db'
 import { router as Auth } from './routes/Auth'
 import { router as Order } from './routes/Orders'
 import { router as Product } from './routes/Product'
+import { router as Categories } from './routes/Categories'
 import cors from 'cors'
 
 class App {
@@ -31,6 +32,7 @@ class App {
       this.express.use('/auth', Auth)
       this.express.use('/order', Order)
       this.express.use('/product', Product)
+      this.express.use('/categories', Categories)
       this.express.use((req, res) => {
         res.status(404).send({ error: 'not found' })
       })

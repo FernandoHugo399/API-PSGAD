@@ -8,6 +8,6 @@ const router = Router()
 
 router.get('/', Verify.AuthVerify, AllProductsController.AllProductsController)
 
-router.post('/', upload.single('file'), CreateProductController.CreateProduct)
+router.post('/', upload.single('file'), Verify.AuthVerify, CreateProductController.CreateProduct)
 
 export { router }
