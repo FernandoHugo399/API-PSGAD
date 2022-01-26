@@ -35,7 +35,7 @@ class LoginController {
         return res.status(200).send({ message: 'User Authenticated', token: token })
       })
     } catch (err) {
-      return res.status(200).send({ error: 'Login Failed: ' + err, message: 'Ocorreu um erro interno' })
+      return res.status(400).send({ error: 'Login Failed: ' + err, message: 'Ocorreu um erro interno' })
     }
   }
 }
