@@ -25,9 +25,8 @@ class CreateProductController {
     }
 
     const format = file.originalname.split('.')
-    if (format[format.length - 1] === 'png' || format[format.length - 1] === 'jpg' || format[format.length - 1] === 'svg' || format[format.length - 1] === 'jpeg') {
-      console.log('Image in valid Format')
-    } else {
+    // eslint-disable-next-line no-empty
+    if (format[format.length - 1] === 'png' || format[format.length - 1] === 'jpg' || format[format.length - 1] === 'svg' || format[format.length - 1] === 'jpeg') {} else {
       return res.status(200).send({ error: 'Invalid format', message: 'Coloque a imagem em um formato válido [png, jpeg, jpg, svg]' })
     }
 
@@ -46,12 +45,9 @@ class CreateProductController {
       })
 
       blobStream.on('finish', async () => {
-        const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`
-
         const produtoValues = [nome, preco, descricao, Categories.rows[0].id_categoria, blob.name]
         db.query(`INSERT INTO produto (nome, preco, descricao, id_categoria, image) values
         ($1, $2, $3, $4, $5)`, produtoValues).then(() => {
-          console.log(publicUrl)
           return res.status(200).send({ message: 'Produto criado com sucesso' })
         }).catch((err) => {
           bucket.file(blob.name).delete()
