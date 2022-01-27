@@ -1,12 +1,11 @@
+import { bucket } from './../../config/gCloud'
 import { Request, Response } from 'express'
 import { db } from '../../database/db'
 
 class CreateProductController {
   public async CreateProduct (req: Request, res: Response) {
     let { nome, preco, categoria, descricao } = req.body
-    console.log(req.body)
     const file = req.file
-    console.log(file)
     if (!nome || !preco || !categoria || !descricao) {
       return res.status(200).send({ error: 'All data has not been filled in. { nome, preco, categoria, descricao }', message: 'Preencha todos os campos' })
     }
@@ -26,15 +25,41 @@ class CreateProductController {
     }
 
     const format = file.originalname.split('.')
-    console.log(format[format.length - 1])
     if (format[format.length - 1] === 'png' || format[format.length - 1] === 'jpg' || format[format.length - 1] === 'svg' || format[format.length - 1] === 'jpeg') {
-      console.log('valid Format')
+      console.log('Image in valid Format')
     } else {
       return res.status(200).send({ error: 'Invalid format', message: 'Coloque a imagem em um formato válido [png, jpeg, jpg, svg]' })
     }
 
     try {
-      return res.status(200).send('ok')
+      const Categories = await db.query('select * from categoria where nome = $1 ', [categoria])
+      if (Categories.rowCount === 0) {
+        return res.status(200).send({ error: 'Invalid Categorie', message: 'Está categoria não existe' })
+      }
+
+      const now = Date.now().toString().substring(0, 10)
+      const blob = bucket.file(now + file.originalname)
+      const blobStream = blob.createWriteStream()
+
+      blobStream.on('error', (err) => {
+        return res.status(200).send({ error: err, message: 'Ocorreu um erro interno' })
+      })
+
+      blobStream.on('finish', async () => {
+        const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`
+
+        const produtoValues = [nome, preco, descricao, Categories.rows[0].id_categoria, blob.name]
+        db.query(`INSERT INTO produto (nome, preco, descricao, id_categoria, image) values
+        ($1, $2, $3, $4, $5)`, produtoValues).then(() => {
+          console.log(publicUrl)
+          return res.status(200).send({ message: 'Produto criado com sucesso' })
+        }).catch((err) => {
+          bucket.file(blob.name).delete()
+          return res.status(200).send({ error: err, message: 'Ocorreu um erro ao criar o produto' })
+        })
+      })
+
+      blobStream.end(file.buffer)
     } catch (err) {
       return res.status(400).send({ error: err, message: 'Ocorreu um erro interno' })
     }
