@@ -1,10 +1,8 @@
 # API TypeScript
 
 ## :mag: About: 
-Structure of a typescript api, already configured with eslint
+API for PSGAD application
 <br>
-
-
 
 ## 👷 how to run it:
 ```bash
