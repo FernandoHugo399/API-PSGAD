@@ -12,7 +12,8 @@ git clone https://github.com/FernandoHugo399/API-PSGAD/
 # open an IDE of your choice
 
 # Add data to .env
-# Add KeyFileName from google cloud Storage to src/config
+# Add KeyFileName from google cloud Storage to src/config, renamed to 'service-account.json'
+# Create database in postgres with dump that was made available
 
 # run yarn to install dependencies, after that, use yarn dev to start the server
 yarn
@@ -31,5 +32,17 @@ Post: /auth/login
 
 # verify
 Get: /auth
+
+# Pending orders
+Get: /order/pending
+
+# All products
+Get: /product
+
+# Crete product
+Post: /product
+
+# All Categories
+Get: /categories
 
 ```
