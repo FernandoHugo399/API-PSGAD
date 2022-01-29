@@ -33,21 +33,21 @@ Post: /auth/login
 # verify
 Get: /auth
 
-# Pending orders
+# pending orders
 Get: /order/pending
 
-# All products
+# all products
 Get: /product
 
-# Create product
+# create product
 Post: /product
 
-# All Categories
+# all categories
 Get: /categories
 
-# Create Category
+# create category
 Post: /categories
 
-# Delete Category
+# delete category
 Delete: /categories
 ```
