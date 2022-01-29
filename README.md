@@ -39,10 +39,15 @@ Get: /order/pending
 # All products
 Get: /product
 
-# Crete product
+# Create product
 Post: /product
 
 # All Categories
 Get: /categories
 
+# Create Category
+Post: /categories
+
+# Delete Category
+Delete: /categories
 ```
