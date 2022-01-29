@@ -8,6 +8,6 @@ const router = Router()
 
 router.get('/', Verify.AuthVerify, AllCategoriesController.AllCategoriesController)
 router.post('/', Verify.AuthVerify, CreateCategoriesController.CreateCategory)
-router.post('/delete', Verify.AuthVerify, DeleteCategoriesController.DeleteCategory)
+router.delete('/:id', Verify.AuthVerify, DeleteCategoriesController.DeleteCategory)
 
 export { router }
