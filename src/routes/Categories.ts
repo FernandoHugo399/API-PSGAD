@@ -1,9 +1,11 @@
 import { Router } from 'express'
+import CreateCategoriesController from '../controllers/categories/CreateCategoriesController'
 import AllCategoriesController from '../controllers/categories/AllCategoriesController'
 import Verify from '../middlewares/Verify'
 
 const router = Router()
 
 router.get('/', Verify.AuthVerify, AllCategoriesController.AllCategoriesController)
+router.post('/', Verify.AuthVerify, CreateCategoriesController.CreateCategory)
 
 export { router }

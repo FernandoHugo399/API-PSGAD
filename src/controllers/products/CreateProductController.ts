@@ -33,7 +33,7 @@ class CreateProductController {
     try {
       const Categories = await db.query('select * from categoria where nome = $1 ', [categoria])
       if (Categories.rowCount === 0) {
-        return res.status(200).send({ error: 'Invalid Categorie', message: 'Está categoria não existe' })
+        return res.status(200).send({ error: 'Invalid Category', message: 'Esta categoria não existe' })
       }
 
       const now = Date.now().toString().substring(0, 10)

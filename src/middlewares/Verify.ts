@@ -5,12 +5,6 @@ interface request extends Request{
     userId?: string
 }
 
-declare let process : {
-  env: {
-    SECRET_JWT: string
-  }
-}
-
 class AuthVerify {
   public async AuthVerify (req: request, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization
@@ -19,7 +13,7 @@ class AuthVerify {
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const isTokenValid: any = jwt.verify(authHeader, process.env.SECRET_JWT)
+      const isTokenValid: any = jwt.verify(authHeader, <string>process.env.SECRET_JWT)
       req.userId = isTokenValid.id
 
       return next()
