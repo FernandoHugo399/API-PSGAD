@@ -15,7 +15,7 @@ class CreateCategoryController {
 
       await db.query('insert into categoria (nome) values ($1)', [nome])
 
-      return res.status(200).send({ message: 'Categoria criada com sucesso' })
+      return res.status(201).send({ message: 'Categoria criada com sucesso' })
     } catch (err) {
       return res.status(400).send({ error: err, message: 'Ocorreu um erro interno' })
     }

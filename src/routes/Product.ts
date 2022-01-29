@@ -7,7 +7,6 @@ import { upload } from '../middlewares/Multer'
 const router = Router()
 
 router.get('/', Verify.AuthVerify, AllProductsController.AllProductsController)
-
 router.post('/', Verify.AuthVerify, upload.single('file'), CreateProductController.CreateProduct)
 
 export { router }
