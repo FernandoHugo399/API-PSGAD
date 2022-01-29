@@ -49,5 +49,5 @@ Get: /categories
 Post: /categories
 
 # delete category
-Post: /categories/delete
+Post: /categories/:id
 ```
