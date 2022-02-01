@@ -26,7 +26,7 @@ npm run dev
 
 
 ## Routes:
-```js
+```bash
 # login
 Post: /auth/login
 
