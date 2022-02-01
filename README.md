@@ -36,6 +36,9 @@ Get: /auth
 # pending orders
 Get: /order/pending
 
+# completed orders
+Get: /order/completed
+
 # all products
 Get: /product
 
