@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 class LoginController {
-  public async Login (req: Request, res: Response) {
+  public async Login (req: Request, res: Response): Promise<Response | void> {
     if (!req.body.email || !req.body.password || typeof req.body.email === undefined || typeof req.body.password === undefined) {
       return res.send({
         error: 'All data has not been filled in. { email, password }',

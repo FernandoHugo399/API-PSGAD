@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { db } from '../../database/db'
 
 class CreateCategoryController {
-  public async CreateCategory (req: Request, res: Response) {
+  public async CreateCategory (req: Request, res: Response): Promise<Response> {
     if (!req.body.nome) return res.status(200).send({ error: 'All data has not been filled in. { nome }', message: 'Preencha os campos' })
 
     const nome = req.body.nome.trim().toLowerCase()

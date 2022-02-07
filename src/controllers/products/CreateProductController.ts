@@ -3,7 +3,7 @@ import { Request, Response } from 'express'
 import { db } from '../../database/db'
 
 class CreateProductController {
-  public async CreateProduct (req: Request, res: Response) {
+  public async CreateProduct (req: Request, res: Response): Promise<Response | void> {
     let { nome, preco, categoria, descricao } = req.body
     const file = req.file
     if (!nome || !preco || !categoria || !descricao) {

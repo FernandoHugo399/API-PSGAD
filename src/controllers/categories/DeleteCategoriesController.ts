@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { db } from '../../database/db'
 
 class DeleteCategoryController {
-  public async DeleteCategory (req: Request, res: Response) {
+  public async DeleteCategory (req: Request, res: Response): Promise<Response> {
     if (!req.params.id) return res.status(200).send({ error: 'All data has not been filled in. { id }', message: 'Id da categoria não foi passada' })
     try {
       const deleteResult = await db.query('delete from categoria where id_categoria = $1', [req.params.id])
