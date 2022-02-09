@@ -15,6 +15,11 @@ git clone https://github.com/FernandoHugo399/API-PSGAD/
 # Add KeyFileName from google cloud Storage to src/config, renamed to 'service-account.json'
 # Create database in postgres with dump that was made available
 
+#app access credentials
+login: teles@gmail.com 
+password: 123123
+
+
 # run yarn to install dependencies, after that, use yarn dev to start the server
 yarn
 yarn dev
