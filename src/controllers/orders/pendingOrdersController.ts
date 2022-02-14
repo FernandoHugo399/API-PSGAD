@@ -14,7 +14,7 @@ class PendingOrdersController {
       const orderFormated = order.rows.map((order: IPendentOrder) => {
         return {
           id_order: order.id_pedido,
-          name: order.nome,
+          client_name: order.nome,
           order_date: order.data_pedido,
           total_value: order.valor_total,
           status: order.status

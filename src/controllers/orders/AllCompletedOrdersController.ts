@@ -23,7 +23,7 @@ class AllCompletedOrders {
           total_order: order.valor_total_pedido,
           product: order.produto,
           unit_price: order.preco_unitario,
-          length: order.quantidade,
+          amount: order.quantidade,
           order_date: order.data_pedido
         }
       })
