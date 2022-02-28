@@ -20,7 +20,7 @@ class PendingOrdersController {
           status: order.status
         }
       })
-      return res.status(200).send({ length: order.rowCount, pedidos: orderFormated })
+      return res.status(200).send({ length: order.rowCount, orders: orderFormated })
     } catch (err) {
       return res.status(200).send({ error: 'Ocorreu um erro: ' + err, message: 'Ocorreu um erro interno, tente novamente' })
     }
